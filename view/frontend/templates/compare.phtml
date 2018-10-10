@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © Magento2Express. All rights reserved.
+ * @author: <mailto:contact@magento2express.com>.
+ */
+?>
+<!-- <a href="javascript:void(0);" class="action tocompare cart-btn">Compare</a> -->
+<!--
+<a href="#"
+   class="action tocompare"
+   title="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+   aria-label="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+   data-post='<?= /* @escapeNotVerified */ $block->getCompareHelper()->getPostDataParams($block->getProduct()) ?>'
+   role="button">
+    <span><?= /* @escapeNotVerified */ __('Add to Compare') ?></span>
+</a>
+-->
+<div class="new-compare-btn">
+    <label>
+        <input type="checkbox" name="compare_items" class="compare_items" value="<?= $block->getProduct()->getEntityId(); ?>"><span>Add to compare</span>
+    </label>
+</div>

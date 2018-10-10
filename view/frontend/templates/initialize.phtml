@@ -1,0 +1,17 @@
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "quick_compare": {
+                        "component": "M2express_ProductCompare/js/quick_compare"
+                    }
+                 }
+            }
+        }
+    }
+</script>
+
+<div data-bind="scope: 'quick_compare'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>

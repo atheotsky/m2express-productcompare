@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="M2express_ProductCompare::css/compare-m.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="page.main.title" display="false"/>
+            <referenceBlock name="home.product.addto">
+                <block class="M2express\ProductCompare\Block\Compare" name="product.compare"
+                       template="M2express_ProductCompare::compare.phtml" after="product.quicklook" />
+            </referenceBlock>
+            <referenceBlock name="header.panel">
+                <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" after="minicart"
+                       template="M2express_ProductCompare::newlink.phtml" />
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="M2express\ProductCompare\Block\Initialize" name="product.quick_compare.initialize" template="M2express_ProductCompare::initialize.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

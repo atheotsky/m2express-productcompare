@@ -1,0 +1,36 @@
+<div id="quickcompare-modal" class="quickcompare" style="display: none";>
+    <table>
+        <tbody>
+        <tr>
+            <th></th>
+            <!-- ko foreach: productList -->
+            <td><img data-bind="attr:{src: imgPath}" /></td>
+            <!-- /ko -->
+        </tr>
+        <tr>
+            <th><span>Product Name</span></th>
+            <!-- ko foreach: productList -->
+            <td><h3><span data-bind="text: data.name"></span></h3></td>
+            <!-- /ko -->
+        </tr>
+        <tr>
+            <th><span>Price</span></th>
+            <!-- ko foreach: productList -->
+            <td><span data-bind="text: data.price"></span></td>
+            <!-- /ko -->
+        </tr>
+        <tr>
+            <th><span>Sku</span></th>
+            <!-- ko foreach: productList -->
+            <td><span data-bind="text: data.sku"></span></td>
+            <!-- /ko -->
+        </tr>
+        <tr>
+            <th><span>Description</span></th>
+            <!-- ko foreach: productList -->
+            <td><div data-bind="html: data.description"></div></td>
+            <!-- /ko -->
+        </tr>
+        </tbody>
+    </table>
+</div>
