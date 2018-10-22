@@ -22,5 +22,5 @@
     </label>
 </div>
 -->
-an data-bind="scope: 'add_item_to_compare'"><a href="javascript:void(0);" class="action toquicklook cart-btn open-quick-look-modal" data-bind="click: openQuickLookModal.bind(this,<?= $block->getProduct()->getEntityId(); ?>)" data-pid="<?= $block->getProduct()->getEntityId(); ?>">QuickLook</a></span>
+<span data-bind="scope: 'quick_compare'"><a href="javascript:void(0);" class="action tocompare cart-btn" data-bind="click: addToCompareV.bind(this,<?= $block->getProduct()->getEntityId(); ?>,'<?= $block->getProduct()->getData('name'); ?>')" data-pid="<?= $block->getProduct()->getEntityId(); ?>">Add to compare</a></span>
 

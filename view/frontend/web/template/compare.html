@@ -34,3 +34,15 @@
         </tbody>
     </table>
 </div>
+
+<div id="sidebar-modal" class="sidebar-container" style="display: none";>
+    LIST <br/>
+    <ul>
+        <!-- ko foreach: productToCompare -->
+        <li><b data-bind="text: name"></b> <button data-bind="click: function() { $parent.removeItemCompareV($data); }">X</button></li>
+        <!-- /ko -->
+    </ul>
+
+    <br/>
+    <a href="javascript:void(0);" class="action open-quick-look-modal" data-bind="click: openQuickCompareModal">Compare now</a></span>
+</div>

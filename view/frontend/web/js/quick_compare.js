@@ -6,6 +6,7 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
             template: 'M2express_ProductCompare/compare'
         },
         productList : ko.observableArray([]),
+        productToCompare: ko.observableArray([]),
         initObservable: function () {
             self = this;
             this._super();
@@ -13,9 +14,15 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
         },
         openQuickCompareModal:function () {
             var productCompareList = [];
+            /*
             var selectedProduct = $('.compare_items:checked').map(function() {
                 return this.value;
             }).get().join(', ');
+            */
+            var selectedProduct = self.productToCompare().map(function(elem){
+                return elem.id;
+            }).join(",");
+
             $.ajax(
                 {
                     type:'GET',
@@ -49,6 +56,55 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
         },
         onSelectedCheckbook: function (item) {
             return item;
+        },
+        openCompareSideBar:function () {
+
+            var options = {
+                type: 'slide',
+                responsive: true,
+                innerScroll: false,
+                modalLeftMargin:200,
+                title: false,
+                buttons: false
+            };
+            var modal_overlay_element = $('#sidebar-modal');
+
+            var popup = modal(options, modal_overlay_element);
+
+            modal_overlay_element.css("display", "block");
+
+            var modalContainer = $("#sidebar-modal");
+            modalContainer.modal('openModal');
+        },
+        addToCompare:function (item) {
+            if(self.productToCompare.indexOf(item) > -1) {
+                // Duplicate
+            } else {
+                self.productToCompare.push(item);
+            }
+        },
+        addToCompareV:function (id, name) {
+            if(self.productToCompare().map(function(a) { return a.id; }).indexOf(id) > -1) {
+                // Duplicate data
+            } else {
+                self.productToCompare.push({
+                    id: id,
+                    name: name
+                });
+            }
+        },
+        removeItemCompare: function (item) {
+            if(self.productToCompare.indexOf(item) > -1) {
+                self.productToCompare.remove(item);
+            }
+        },
+        removeItemCompareV: function (item) {
+            //console.log(item);
+            if(self.productToCompare().map(function(a) { return a.id; }).indexOf(item.id) > -1) {
+                self.productToCompare.remove(function(items) {
+                    return items.id === item.id;
+                });
+            }
         }
     });
 });
