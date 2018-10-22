@@ -19,7 +19,7 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
             $.ajax(
                 {
                     type:'GET',
-                    url:'/quick_compare/item/index/items/' + selectedProduct,
+                    url:'/rest/V1/product-compare/items/' + selectedProduct,
                     data: null,
                     dataType: 'json',
                     success: function(data){
@@ -45,9 +45,6 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
                         modalContainer.modal('openModal');
                     }
                 }
-                // CHeck current checkbox ischecked or not
-                // Add this checkbox data to  cookie
-               ;
             );
         },
         onSelectedCheckbook: function (item) {
