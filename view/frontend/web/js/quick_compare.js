@@ -10,6 +10,11 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
         initObservable: function () {
             self = this;
             this._super();
+
+            if($.cookie('user-selected-compare-items')){
+                var savedData = JSON.parse($.cookie('user-selected-compare-items'));
+                self.productToCompare(savedData);
+            }
             return this;
         },
         openQuickCompareModal:function () {
@@ -76,14 +81,14 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
             var modalContainer = $("#sidebar-modal");
             modalContainer.modal('openModal');
         },
-        addToCompare:function (item) {
+        addToCompareSingle:function (item) {
             if(self.productToCompare.indexOf(item) > -1) {
                 // Duplicate
             } else {
                 self.productToCompare.push(item);
             }
         },
-        addToCompareV:function (id, name) {
+        addToCompare:function (id, name) {
             if(self.productToCompare().map(function(a) { return a.id; }).indexOf(id) > -1) {
                 // Duplicate data
             } else {
@@ -91,19 +96,21 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
                     id: id,
                     name: name
                 });
+                $.cookie('user-selected-compare-items', ko.toJSON(self.productToCompare), {expires: 7 });
             }
         },
-        removeItemCompare: function (item) {
+        removeItemCompareSingle: function (item) {
             if(self.productToCompare.indexOf(item) > -1) {
                 self.productToCompare.remove(item);
             }
         },
-        removeItemCompareV: function (item) {
+        removeItemCompare: function (item) {
             //console.log(item);
             if(self.productToCompare().map(function(a) { return a.id; }).indexOf(item.id) > -1) {
                 self.productToCompare.remove(function(items) {
                     return items.id === item.id;
                 });
+                $.cookie('user-selected-compare-items', ko.toJSON(self.productToCompare), {expires: 7 });
             }
         }
     });
