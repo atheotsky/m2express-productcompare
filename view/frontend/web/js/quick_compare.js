@@ -36,6 +36,7 @@ define(['jquery', 'ko', 'Magento_Ui/js/modal/modal', 'uiComponent', 'domReady!']
                     dataType: 'json',
                     success: function(data){
                         $.each(data, function(index, product) {
+                            product.imgPath = window.mediaPath + product.data.image;
                             productCompareList.push(product);
                         });
                         self.productList(productCompareList);
