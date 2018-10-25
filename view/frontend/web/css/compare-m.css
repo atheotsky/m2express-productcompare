@@ -1,6 +1,12 @@
 .page-header .compare {
     display: block !important;
 }
+.compare-list {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    z-index: 99999;
+}
 #floating-top-right-menu {
     position: fixed;
     right: 0;
@@ -48,3 +54,4 @@
     background-color:#c11;
     color:#fff;
 }
+
